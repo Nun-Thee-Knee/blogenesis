@@ -17,4 +17,28 @@
             </p>
         </center>
     </div>
+    <div class="container mt-4">
+        <img src="<%=blog.createdBy.profileImageUrl%>" width="50px" alt="">
+        <%=blog.createdBy.fullName%>
+    </div>
+    <div class="container mt-3">
+        <h1>Comments (<%=comments.length%>)</h1>
+        <% if (locals.user) { %>
+            <form action="/blog/comment/<%=blog._id%>" method="post">
+                <div class="mb-3">
+                    <input placeholder="Enter your comment" name="content" type="text" class="form-control" id="content" aria-describedby="emailHelp">
+                    <button class="mt-1 btn btn-sm btn-dark" type="submit">Add</button>
+                </div>
+            </form>
+        <% } %>
+        <div class="container mt-3">
+            <% comments.forEach(comment => { %>
+             <div>
+                <img src="<%=comment.createdBy.profileImageUrl%>" width="50px" alt="">
+        <%=comment.createdBy.fullName%>
+        <pre><%=comment.content%></pre>
+             </div>
+            <% }) %>
+        </div>
+    </div>
 </body>

@@ -8,9 +8,11 @@
 <body>
     <%- include('./partials/head.ejs') %>
     <%- include('./partials/NavBar.ejs') %>
-    <div class="container mt-3">
+    <center>
+    <div class="container mt-3 row row-cols-4 sm:row">
         <% blogs.forEach(blog => { %>
-            <div class="card" style="width: 18rem;">
+            <div class="col">
+              <div class="card" style="width: 18rem;">
                 <img src=<%=blog.coverImageURL%> class="card-img-top" alt="...">
                 <div class="card-body">
                   <center>
@@ -19,7 +21,9 @@
                   </center>
                 </div>
               </div>
+            </div>
         <% }) %>
     </div>
+  </center>
 </body>
 </html>
