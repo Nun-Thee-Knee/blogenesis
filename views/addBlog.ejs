@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Blog</title>
+</head>
+<body>
+    <%- include('./partials/head.ejs') %>
+    <%- include('./partials/NavBar.ejs') %>
+    <div class="container mt-3">
+        <form action="/blog" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="coverImage" class="form-label">Cover Image</label>
+                <input id="coverImage" name="coverImage" type="file" class="form-control">
+              </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input id="title" name="title" type="text" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="body" class="form-label">Content of Blog</label>
+                <textarea class="form-control" id="body" name="body" rows="3"></textarea>
+              </div>
+              <div class="mb-3">
+                <button type="submit" class="btn btn-dark">Submit</button>
+              </div>
+        </form>
+    </div>
+</body>
+</html>

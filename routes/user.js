@@ -21,10 +21,20 @@ router.post("/signup", async(req,res)=>{
 })
 
 router.post("/signin", async(req, res)=>{
-    const {email, password} = req.body;
-    const user = await User.matchPassword(email, password);
-    console.log(user);
-    res.redirect("/");
+    try {
+        const {email, password} = req.body;
+        const token = await User.matchPasswordAndGenerateToken(email, password);
+        console.log("token", token);
+        res.cookie('token', token).redirect("/");
+    } catch (error) {
+        return res.render('signin', {
+            error: "User credentials are invalid"
+        })
+    }
+})
+
+router.get("/logout", (req, res)=>{
+    res.clearCookie("token").redirect("/");
 })
 
 module.exports = router;

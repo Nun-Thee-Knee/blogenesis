@@ -8,5 +8,18 @@
 <body>
     <%- include('./partials/head.ejs') %>
     <%- include('./partials/NavBar.ejs') %>
+    <div class="container mt-3">
+        <% blogs.forEach(blog => { %>
+            <div class="card" style="width: 18rem;">
+                <img src=<%=blog.coverImageURL%> class="card-img-top" alt="...">
+                <div class="card-body">
+                  <center>
+                    <h5 class="card-title"><%=blog.title%></h5>
+                  <a href="/blog/<%=blog._id%>" class="btn btn-dark">View</a>
+                  </center>
+                </div>
+              </div>
+        <% }) %>
+    </div>
 </body>
 </html>
